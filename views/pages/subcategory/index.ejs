@@ -10,11 +10,15 @@
 </header>
 
 <main>
-  
+  <a href="/admin/subcategory/create" class="btn btn-success">Add</a>
   <ul>
     <% subcategories.forEach(function(subcategory) { %>
       <li>
-        <strong><%= subcategory.name %></strong>
+        <a href="/admin/subcategory/<%= subcategory._id %>"> <strong><%= subcategory.name %></strong></a>
+        <form method="POST" action="/admin/subcategory/<%= subcategory.id %>?_method=DELETE">
+          <button type="submit" class="btn btn-danger">X</button>
+        </form>
+      
       </li>
     <% }); %>
   </ul>

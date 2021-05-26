@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../partials/head'); %>
-</head>
-<body class="container">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
 
-<header>
-  <%- include('../partials/header'); %>
-</header>
+    <main>
+      <% products.forEach(function(product) { %>
+      <div class="card mb-3" style="width: 18rem">
+        <img src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"><%= product.description %></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <% }); %>
+    </main>
 
-<main>
-  
-  <ul>
-    <% users.forEach(function(user) { %>
-      <li>firstName
-        <strong><%= user.firstname %></strong>
-        Email <%= user.email %>,
-        lastName <%= user.lastname %>
-      </li>
-    <% }); %>
-  </ul>
-</main>
-
-<footer>
-  <%- include('../partials/footer'); %>
-</footer>
-
-</body>
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
 </html>

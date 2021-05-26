@@ -10,19 +10,73 @@
 </header>
 
 <main>
-    <form method="POST" action="/category">
+    <form method="POST" action="/admin/product">
+     
+      <div class="row">
         <div class="col-md-3 mb-3">
-            <label for="name" class="form-label">Category Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              required
-              name="name"
-
-            />
-          </div>
+          <label for="category" class="form-label">Category</label>
+          <select class="form-control" aria-label="Default select Category" name="category" required>
+            <% subcategories.forEach(function(subcategory) { %>
+              <option value="<%= subcategory.id%>"><%= subcategory.name %></option>
+            <% }); %>
+          </select>
+  
+        </div>
+        <div class="col-md-3">
+          <label for="name" class="form-label">Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            name="name"
+          />
+        </div>
+        <div class="col-md-3">
+          <label for="description" class="form-label">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            required
+            name="description"
+          />
+        </div>
         
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            required
+            name="price"
+          />
+        </div>
+        <div class="col-md-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input
+            type="text"
+            class="form-control"
+            id="quantity"
+            required
+            name="quantity"
+          />
+        </div>
+        <div class="col-md-3">
+          <label for="discount" class="form-label">Discount(%)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="discount"
+            required
+            name="discount"
+          />
+        </div>
+       
+      </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 </main>

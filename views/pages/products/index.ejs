@@ -10,11 +10,15 @@
 </header>
 
 <main>
-  
+  <a href="/admin/product/create" class="btn btn-success">Add</a>
   <ul>
     <% products.forEach(function(product) { %>
       <li>
-        <strong><%= product.name %></strong>
+        <a href="/admin/product/<%= product.id %>"> <strong><%= product.name %></strong></a>
+        <form method="POST" action="/admin/product/<%= product.id %>?_method=DELETE">
+          <button type="submit" class="btn btn-danger">X</button>
+        </form>
+      
       </li>
     <% }); %>
   </ul>

@@ -1,14 +1,29 @@
-const Products = require('../../models/Product.model');
-module.exports.index = async (req,res) =>{
-    let result = await Products.find();
-    res.render('pages/products/index',{categories:result});
+const Product = require('../../models/Product.model');
+const Category= require('../../models/Category.model')
+module.exports.index = async (req, res) => {
+    let result = await Product.find();
+    res.render('pages/products/index', { products: result });
 }
-module.exports.store = async (req,res) => {
-
+module.exports.create = async (req, res) => {
+    const subcategories= await Category.find({parent: {$ne:'/'}});
+    res.render('pages/products/create',{subcategories:subcategories});
 }
-module.exports.update = async (req,res) =>{
-    
+module.exports.edit = async (req, res) => {
+    const result= await Product.findById(req.params.id);
+    const subcategories= await Category.find({parent: {$ne:'/'}});
+    res.render('pages/products/edit',{result:result,req:req,subcategories:subcategories});
 }
-module.exports.destroy = async (req,res) =>{
-    
+module.exports.store = async (req, res) => {
+    let result = await Product.create({...req.body});
+   res.redirect('/admin/product');
+}
+module.exports.update = async (req, res) => {
+    const id= req.params.id;
+    let result = await Product.findByIdAndUpdate(id,{...req.body});
+    res.redirect('/admin/product');
+}
+module.exports.destroy = async (req, res) => {
+    const id= req.params.id;
+    let result = await Product.findByIdAndDelete(id);
+    res.redirect('/admin/product');
 }
