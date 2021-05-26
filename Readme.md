@@ -22,7 +22,7 @@ Screenshots
 <img src="public/screenshot/login.png" height="400" alt="Screenshot"/>
 
 ## Signup 
-<img src="public/screenshot/signupg.png" height="400" alt="Screenshot"/>
+<img src="public/screenshot/signup.png" height="400" alt="Screenshot"/>
 
 ## Category
 <img src="public/screenshot/category.png" height="400" alt="Screenshot"/>
