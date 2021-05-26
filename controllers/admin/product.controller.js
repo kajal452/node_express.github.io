@@ -6,7 +6,7 @@ module.exports.index = async (req, res) => {
     res.render('pages/products/index', { products: result });
 }
 module.exports.create = async (req, res) => {
-    const subcategories= await Category.find({parent: {$ne:'/'}});
+    const subcategories= await Category.find();
     res.render('pages/products/create',{subcategories:subcategories});
 }
 module.exports.edit = async (req, res) => {
@@ -15,8 +15,6 @@ module.exports.edit = async (req, res) => {
     res.render('pages/products/edit',{result:result,req:req,subcategories:subcategories});
 }
 module.exports.store = async (req, res) => {
-    console.log(req.body) // form fields
-    console.log(req.file) // form files
     const {photo,...product} = req.body;
     let result = await Product.create({...product,image:req.file.filename});
     res.redirect('/admin/product');
@@ -24,7 +22,8 @@ module.exports.store = async (req, res) => {
 }
 module.exports.update = async (req, res) => {
     const id= req.params.id;
-    let result = await Product.findByIdAndUpdate(id,{...req.body});
+    const {...product} = req.body;
+    let result = await Product.findByIdAndUpdate(id,{...product});
     res.redirect('/admin/product');
 }
 module.exports.destroy = async (req, res) => {

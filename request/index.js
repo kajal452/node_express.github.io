@@ -1,37 +1,32 @@
 const Joi = require('joi')
+const validator = require('express-joi-validation').createValidator({});
 
-const loginSchema = () =>{ return Joi.object({
+module.exports= { 
+  loginSchema: Joi.object({
   email: Joi.string().required().email(),
   password: Joi.string().required().min(5)
-});
-}
-
-const signupSchema =  () =>{ Joi.object({
-  firstName: Joi.string().required().min(2),
-  lastName: Joi.string().required().min(2),
-  middleName: Joi.string().dataUri(''),
-  mobile: Joi.string().required(),
+}),
+signupSchema:Joi.object({
+  firstname: Joi.string().required().min(2),
+  lastname: Joi.string().required().min(2),
+  middlename: Joi.string(),
+  mobile:Joi.string().length(10).pattern(/^[0-9]+$/).required(),
   email: Joi.string().required().email(),
   password: Joi.string().required().min(5),
-});
-}
-
-const categorySchema = () =>{ Joi.object({
-  name: Joi.string().required().min(4)
-});
-}
-const subCategorySchema = () =>{ Joi.object({
-  name: Joi.string().required(),
-  parent: Joi.string().required()
-
-});
-}
-const productSchema = () =>{ Joi.object({
+}),
+categorySchema:Joi.object({
+  name: Joi.string().required().min(3)
+}),
+subCategorySchema: Joi.object({
+  name: Joi.string().required().min(3),
+  category: Joi.string().required()
+}),
+productSchema: Joi.object({
   name: Joi.string().required().min(4),
-  price: Joi.number().required(),
-  description: Joi.string().default(''),
+  price: Joi.number().precision(2).required(),
+  description: Joi.string(),
   quantity: Joi.number().required(),
-  discount: Joi.string().default('0')
-});
+  discount: Joi.string()
+}),
+validator:validator
 }
-module.exports = {loginSchema,productSchema,subCategorySchema,categorySchema,signupSchema}

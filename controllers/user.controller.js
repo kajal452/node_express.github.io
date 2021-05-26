@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User.model');
 const Product = require('../models/Product.model');
 const Cart = require('../models/Cart.model');
+const Mailer = require('../mail');
 module.exports.getSignup = (req, res) => {
     res.render('pages/auth/signup');
 }
@@ -12,6 +13,7 @@ module.exports.getLogin = (req, res) => {
 module.exports.postSignup = async (req, res) => {
     const hash = bcrypt.hashSync(req.body.password, 10);
     let result = await User.create({ ...req.body, password: hash });
+    let mailsend = await Mailer(req.body.email);
     res.redirect('/');
 }
 module.exports.postLogin = async (req, res) => {
