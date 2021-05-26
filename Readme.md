@@ -10,7 +10,7 @@ This is simple Shopping Cart Project .
 - multer (for image req)
 - method-override (for multiple HTTP request support PUT,DELETE)
 - bcrypt (password hash )
-- dotenv (enviroment setupgit)
+- dotenv (enviroment setup)
 
 
 Screenshots
