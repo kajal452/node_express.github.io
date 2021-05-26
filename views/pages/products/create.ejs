@@ -8,9 +8,11 @@
 <header>
   <%- include('../../partials/header'); %>
 </header>
-
+<div class="container">
+  <h2>Products</h2>
+  </div>
 <main>
-    <form method="POST" action="/admin/product">
+    <form method="POST" action="/admin/product" enctype="multipart/form-data">
      
       <div class="row">
         <div class="col-md-3 mb-3">
@@ -75,7 +77,19 @@
             name="discount"
           />
         </div>
-       
+       <div class="row  mt-3">
+        <div class="">
+          <input
+        type="file"
+        class="form-control"
+        id="product_image"
+        required
+        name="photo"
+        accept="image/*"
+      />
+         </div>
+        
+       </div>
       </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

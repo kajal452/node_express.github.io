@@ -1,5 +1,6 @@
 const Product = require('../../models/Product.model');
 const Category= require('../../models/Category.model')
+
 module.exports.index = async (req, res) => {
     let result = await Product.find();
     res.render('pages/products/index', { products: result });
@@ -14,8 +15,12 @@ module.exports.edit = async (req, res) => {
     res.render('pages/products/edit',{result:result,req:req,subcategories:subcategories});
 }
 module.exports.store = async (req, res) => {
-    let result = await Product.create({...req.body});
-   res.redirect('/admin/product');
+    console.log(req.body) // form fields
+    console.log(req.file) // form files
+    const {photo,...product} = req.body;
+    let result = await Product.create({...product,image:req.file.filename});
+    res.redirect('/admin/product');
+   
 }
 module.exports.update = async (req, res) => {
     const id= req.params.id;

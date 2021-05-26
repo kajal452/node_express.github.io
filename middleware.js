@@ -1,16 +1,24 @@
 module.exports.authenticate= (req,res,next) =>{
-
-   console.log('authenticate middleware'+req.url);
-    next();
+    console.log('authenticate middleware'+req.url);
+    if(!req.session.user)
+         res.redirect('/');
+    else
+        next();
 }
 
 module.exports.verifyAdmins = (req,res,next) =>{
     console.log('verify admin middleware called');
-    next();
+    if(req.session.user && req.session.user.isadmin)
+        next();
+    else
+        res.redirect('/');
 }
 module.exports.guest = (req,res,next) =>{
-    console.log('verify admin middleware called');
-    next();
+    console.log('verify guest called');
+    if(req.session.user)
+         res.redirect('/');
+    else
+        next();
 }
 
 module.exports.notFound =  (req, res, next)=> {
