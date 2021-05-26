@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../../partials/header'); %></header>
+
+    <main>
+      <form method="POST" class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <label for="firstname" class="form-label">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              required
+              name="firstname"
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="middlename" class="form-label">Middle Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="middlename"
+              required
+              name="middlename"
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              required
+              name="lastname"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-3">
+            
+          <label for="exampleInputEmail1" class="form-label"
+          >Email address</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          name="email"
+        />
+        </div>
+          <div class="col-md-3">
+            <label for="mobile" class="form-label">Mobile</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mobile"
+              required
+              name="mobile"
+
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            name="password"
+          />
+          </div>
+        </div>
+       
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </main>
+
+    <footer><%- include('../../partials/footer'); %></footer>
+  </body>
+</html>

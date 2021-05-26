@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../../partials/header'); %>
+</header>
+
+<main>
+  
+  <ul>
+    <% categories.forEach(function(category) { %>
+      <li>
+        <a href="/category/<%= category._id %>"> <strong><%= category.name %></strong></a>
+       
+      </li>
+    <% }); %>
+  </ul>
+</main>
+
+<footer>
+  <%- include('../../partials/footer'); %>
+</footer>
+
+</body>
+</html>
