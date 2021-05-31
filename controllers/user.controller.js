@@ -18,10 +18,17 @@ module.exports.postSignup = async (req, res) => {
 }
 module.exports.postLogin = async (req, res) => {
     const user=  await User.findOne({email:req.body.email});
+    
+   if(user){
     const match= await bcrypt.compare(req.body.password, user.password);
-   if(user && match){
-       req.session.user=user;
+    if(match){
+    req.session.user=user;
     res.redirect('/signup');
+    }
+    else{
+        res.redirect('/');
+    }
+    
    }else{
        res.redirect('/');
    }

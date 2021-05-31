@@ -9,6 +9,7 @@ const db = require('./db');
 
 // routes
 const userRouter = require('./routes/user');
+const cartRouter = require('./routes/cart');
 const categoryRouter = require('./routes/admin/category');
 const subCategoryRouter = require('./routes/admin/subcategory');
 const productRouter = require('./routes/admin/product');
@@ -28,6 +29,7 @@ app.use(function(req, res, next) {
     next();
   });
 app.use('/', userRouter);
+app.use('/cart', cartRouter);
 app.use('/admin',[middlewares.authenticate,middlewares.verifyAdmins]);
 app.use('/admin/category', categoryRouter);
 app.use('/admin/subcategory', subCategoryRouter);
