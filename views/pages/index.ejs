@@ -17,7 +17,12 @@
           <h5 class="card-title"><%= product.name %></h5>
           <p class="card-text"><%= product.description %></p>
           <% if(user){ %>
+            <% if(product.quantity>0){ %>
+              <p class="text-danger">Hurry Only <%= product.quantity %> in Stock</p>
           <a href="/cart/<%= product.id %>" class="btn btn-primary">Add To Cart</a>
+          <% } else{ %>
+            <h4 class="text-danger">Out Of Stock</h4>
+            <% }%>
           <% }%>
         </div>
       </div>
