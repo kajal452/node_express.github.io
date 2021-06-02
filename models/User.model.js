@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
    email :{type: String,required: true,unique:true,index:true},
    password :{type: String,required: true},
    mobile :{type: Number,required: true},
-   isadmin: {type:Boolean,default:false}
+   isadmin: {type:Boolean,default:false},
+   token:{type: String,default: ''},
   });
 
 

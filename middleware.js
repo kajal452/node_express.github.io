@@ -1,3 +1,4 @@
+const User = require('./models/User.model');
 module.exports.authenticate= (req,res,next) =>{
     console.log('authenticate middleware'+req.url);
     if(!req.session.user)
@@ -21,6 +22,20 @@ module.exports.guest = (req,res,next) =>{
         next();
 }
 
+module.exports.authenticateApi= async (req,res,next) =>{
+    console.log('api middleware');
+    if(req.get('token')!=''){
+    let user = await User.findOne({'token':req.get('token')});
+    if(user)
+        next();
+    }
+    return res.json({'msg':'invalida token'});
+}
+module.exports.jsonReq =  (req, res, next)=> {
+    if(!req.is(['json','application/json']))
+    return res.json({'msg':'only json, application/json type acceptable'});
+    next();
+}
 module.exports.notFound =  (req, res, next)=> {
     res.status(404).render('error/404')
 }

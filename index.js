@@ -13,6 +13,10 @@ const cartRouter = require('./routes/cart');
 const categoryRouter = require('./routes/admin/category');
 const subCategoryRouter = require('./routes/admin/subcategory');
 const productRouter = require('./routes/admin/product');
+// 
+const apiUserRouter = require('./routes/api/user');
+const apiProductRouter = require('./routes/api/product');
+
 const middlewares = require('./middleware'); //middleware
 const PORT = process.env.PORT || 3000;
 
@@ -28,13 +32,21 @@ app.use(function(req, res, next) {
     res.locals.user = req.session.user;
     next();
   });
+  
+app.use('/admin',[middlewares.authenticate,middlewares.verifyAdmins]);
+app.use('/api',middlewares.jsonReq);
+app.use('/api/auth',middlewares.authenticateApi);
+
+//routes
 app.use('/', userRouter);
 app.use('/cart', cartRouter);
-app.use('/admin',[middlewares.authenticate,middlewares.verifyAdmins]);
 app.use('/admin/category', categoryRouter);
 app.use('/admin/subcategory', subCategoryRouter);
 app.use('/admin/product', productRouter);
 
+// api
+app.use('/api',apiUserRouter);
+app.use('/api/auth',apiProductRouter);
 
 app.use(middlewares.notFound);
 app.use(middlewares.serverError);
