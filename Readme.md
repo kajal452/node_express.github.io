@@ -35,3 +35,6 @@ Screenshots
 
 ## Product Add
 <img src="public/screenshot/product_add.png" height="400" alt="Screenshot"/>
+
+## Cart
+<img src="public/screenshot/cart.png" height="400" alt="Screenshot"/>
