@@ -7,7 +7,8 @@ const productSchema = new mongoose.Schema({
     quantity:{type: Number,required:true},
     discount:{type: String,required:true},
     category:{type:mongoose.Schema.Types.ObjectId,required:true,ref:'Category'},
-    image:{type:String,default:''}
+    image:{type:String,default:''},
+    status:{type:Boolean,default:false}
   });
 
 

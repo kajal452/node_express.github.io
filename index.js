@@ -46,7 +46,7 @@ app.use('/admin/product', productRouter);
 
 // api
 app.use('/api',apiUserRouter);
-app.use('/api/auth',apiProductRouter);
+app.use('/api/auth/products',apiProductRouter);
 
 app.use(middlewares.notFound);
 app.use(middlewares.serverError);

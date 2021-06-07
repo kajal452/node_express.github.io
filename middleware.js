@@ -1,6 +1,5 @@
 const User = require('./models/User.model');
 module.exports.authenticate= (req,res,next) =>{
-    console.log('authenticate middleware'+req.url);
     if(!req.session.user)
          res.redirect('/');
     else
@@ -8,14 +7,12 @@ module.exports.authenticate= (req,res,next) =>{
 }
 
 module.exports.verifyAdmins = (req,res,next) =>{
-    console.log('verify admin middleware called');
     if(req.session.user && req.session.user.isadmin)
         next();
     else
         res.redirect('/');
 }
 module.exports.guest = (req,res,next) =>{
-    console.log('verify guest called');
     if(req.session.user)
          res.redirect('/');
     else
@@ -23,18 +20,23 @@ module.exports.guest = (req,res,next) =>{
 }
 
 module.exports.authenticateApi= async (req,res,next) =>{
-    console.log('api middleware');
     if(req.get('token')!=''){
-    let user = await User.findOne({'token':req.get('token')});
+    let user = await User.findById(req.get('token'));
     if(user)
         next();
+    else
+        res.json({'msg':'invalida token'});
+    }else{
+        res.json({'msg':'invalida token'});
     }
-    return res.json({'msg':'invalida token'});
+    
 }
 module.exports.jsonReq =  (req, res, next)=> {
-    if(!req.is(['json','application/json']))
-    return res.json({'msg':'only json, application/json type acceptable'});
-    next();
+    if(req.get('Content-Type') === "application/json"){
+        next();
+    }else{
+        res.json({'msg':'only json, application/json type acceptable'});
+    }
 }
 module.exports.notFound =  (req, res, next)=> {
     res.status(404).render('error/404')

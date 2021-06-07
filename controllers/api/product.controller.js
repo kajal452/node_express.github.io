@@ -19,10 +19,12 @@ module.exports.update = async (req, res) => {
 module.exports.destroy = async (req, res) => {
     const id= req.params.id;
     let result = await Product.findByIdAndDelete(id);
-    res.redirect('/admin/product');
+    console.log(result);
+    res.json(result);
 }
 module.exports.changeStatus = async (req, res) => {
-    const {id} = req.body;
-    let result = await Product.findByIdAndUpdate(id,{...product});
-    res.redirect('/admin/product');
+    const {id,status} = req.body;
+    let result = await Product.findByIdAndUpdate(id,{status:status});
+    res.json(result);
+    console.log(result);
 }
