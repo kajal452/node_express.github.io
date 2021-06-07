@@ -7,7 +7,7 @@ module.exports.postLogin = async (req, res) => {
     if (user) {
         const match = await bcrypt.compare(password, user.password);
         if (match) {
-            res.status(200).json(user);
+            res.json({'token':user._id});
         } else {
             res.status(401).json(msg);
         }
@@ -16,14 +16,12 @@ module.exports.postLogin = async (req, res) => {
     }
 }
 module.exports.postUpdateProfile = async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email: email });
-    const msg = { msg: 'Invalid Login Credential' };
-    if (user) {
-        const match = await bcrypt.compare(password, user.password);
-        if (match) {
-            res.status(200).json(user);
-        }
+    const id = req.token;
+    try{
+        const user = await User.findByIdAndUpdate(id,{...req.body});
+        res.json({'msg':'User Profile Update Succefully'});
+    }catch(e){
+        res.status(500);
     }
-    res.status(401).json(msg);
+
 }

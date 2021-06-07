@@ -47,6 +47,3 @@ module.exports.getLogout = (req,res) =>{
     });
     res.redirect('/');
 }
-module.exports.addCart = (req,res) =>{
-   
-}

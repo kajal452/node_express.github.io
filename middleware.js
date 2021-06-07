@@ -22,10 +22,12 @@ module.exports.guest = (req,res,next) =>{
 module.exports.authenticateApi= async (req,res,next) =>{
     if(req.get('token')!=''){
     let user = await User.findById(req.get('token'));
-    if(user)
+    if(user){
+        req.token = user._id;
         next();
-    else
+    }else{
         res.json({'msg':'invalida token'});
+    }
     }else{
         res.json({'msg':'invalida token'});
     }

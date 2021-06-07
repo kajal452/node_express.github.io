@@ -8,7 +8,8 @@ const productSchema = new mongoose.Schema({
     discount:{type: String,required:true},
     category:{type:mongoose.Schema.Types.ObjectId,required:true,ref:'Category'},
     image:{type:String,default:''},
-    status:{type:Boolean,default:false}
+    status:{type:Boolean,default:false},
+    deleted_at:{type:Date,default:null}
   });
 
 
