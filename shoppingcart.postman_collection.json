@@ -1,0 +1,271 @@
+{
+	"id": "6cc56801-2ef8-06e9-69e7-64752950966a",
+	"name": "shoppingcart",
+	"description": "",
+	"order": [
+		"62d94335-d8bf-dcc8-cbac-61192204f3ab",
+		"008b657d-5d03-0b3c-8457-b79348a35dfd",
+		"7aaf5b2b-abd4-4c8d-327b-2dd7442ad5be",
+		"6768979a-3d2e-61eb-9ec4-8bd0b9d15a17",
+		"b002725a-1837-78e5-1390-8ea0eb7a9f84",
+		"d77db20b-1fb5-8389-40d4-5c770a5ca6bf",
+		"dc5c756c-38be-6a91-a101-d622145a383f"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1621938576237,
+	"owner": "8780434",
+	"public": false,
+	"requests": [
+		{
+			"id": "008b657d-5d03-0b3c-8457-b79348a35dfd",
+			"headers": "Content-Type: application/json\ntoken: 60b6f73e8d702034a87b2d03\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "60b6f73e8d702034a87b2d03",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/auth/products",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1623043717163,
+			"name": "Product List",
+			"description": "Shopping Cart API Product List",
+			"collectionId": "6cc56801-2ef8-06e9-69e7-64752950966a",
+			"responses": []
+		},
+		{
+			"id": "62d94335-d8bf-dcc8-cbac-61192204f3ab",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/login",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "6cc56801-2ef8-06e9-69e7-64752950966a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Login",
+			"description": "ShopingCart Api Login",
+			"descriptionFormat": "html",
+			"time": 1623042041986,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"email\":\"pawan@xigmapro.com\",\n\t\"password\":\"admin\"\n}"
+		},
+		{
+			"id": "6768979a-3d2e-61eb-9ec4-8bd0b9d15a17",
+			"headers": "token: 60b6f73e8d702034a87b2d03\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "token",
+					"value": "60b6f73e8d702034a87b2d03",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/auth/products/change-status",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "6cc56801-2ef8-06e9-69e7-64752950966a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Change Product Status",
+			"description": "Shoping Cart API product status change",
+			"descriptionFormat": "html",
+			"time": 1623044277037,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"id\":\"60b6f1c1a8bd8c3aac37ae1e\",\n\t\"status\":true\n}"
+		},
+		{
+			"id": "7aaf5b2b-abd4-4c8d-327b-2dd7442ad5be",
+			"headers": "token: {{token}}\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "token",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/auth/update-profile",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "6cc56801-2ef8-06e9-69e7-64752950966a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Update Profile",
+			"description": "Shopping Cart API Update Profile",
+			"descriptionFormat": "html",
+			"time": 1623044238630,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"firstname\":\"Prince\",\n\t\"middlename\":\"Sax\",\n\t\"lastname\":\"Kumar\",\n\t\"mobile\":\"8340530508\"\n}"
+		},
+		{
+			"id": "b002725a-1837-78e5-1390-8ea0eb7a9f84",
+			"headers": "Content-Type: application/json\ntoken: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/auth/products/60b6f1c1a8bd8c3aac37ae1e",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "6cc56801-2ef8-06e9-69e7-64752950966a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Update Product",
+			"description": "Shopping Cart Item Update",
+			"descriptionFormat": "html",
+			"time": 1623047259448,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\t\t\"name\": \"Tshirt Updated\",\n            \"description\": \"Tshirt\",\n            \"price\": \"600\",\n            \"quantity\": 40,\n            \"discount\": \"5\"\n}"
+		},
+		{
+			"id": "d77db20b-1fb5-8389-40d4-5c770a5ca6bf",
+			"headers": "Content-Type: application/json\ntoken: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/auth/products/60b6f1c1a8bd8c3aac37ae1e",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "6cc56801-2ef8-06e9-69e7-64752950966a",
+			"data": null,
+			"dataMode": "params",
+			"name": "Delete Product",
+			"description": "Shoping Cart Product Soft Delete",
+			"descriptionFormat": "html",
+			"time": 1623047526721,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "dc5c756c-38be-6a91-a101-d622145a383f",
+			"headers": "Content-Type: application/json\ntoken: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/auth/products",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "6cc56801-2ef8-06e9-69e7-64752950966a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Create Product",
+			"description": "Shoping Cart Product Create without Image",
+			"descriptionFormat": "html",
+			"time": 1623049960761,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"name\":\"New Gel 2 Updated\",\n\t\"price\":500.59,\n\t\"quantity\":5,\n\t\"description\":\"From Api Store New Product 2\",\n\t\"discount\":5,\n\t\"category\":\"60adf8b92631e7346cc31ef5\"\n}"
+		}
+	]
+}
