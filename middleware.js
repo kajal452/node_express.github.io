@@ -34,7 +34,8 @@ module.exports.authenticateApi= async (req,res,next) =>{
     
 }
 module.exports.jsonReq =  (req, res, next)=> {
-    if(req.get('Content-Type') === "application/json"){
+    
+    if(req.originalUrl==="/api/auth/products" || req.get('Content-Type') === "application/json"){
         next();
     }else{
         res.json({'msg':'only json, application/json type acceptable'});

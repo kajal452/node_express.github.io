@@ -12,7 +12,7 @@ module.exports.index = async (req, res) => {
 module.exports.store = async (req, res) => {
     const { photo, ...product } = req.body;
     try {
-        let result = await Product.create({ ...product});
+        let result = await Product.create({ ...product,image:req.file.filename});
         res.json({ 'msg': "Item Created Succefully", "result": result });
     } catch (exception) {
         res.status(500);
@@ -24,7 +24,6 @@ module.exports.update = async (req, res) => {
     const { ...product } = req.body;
     try {
         let result = await Product.findByIdAndUpdate(id, { ...product });
-        console.log(result);
         res.json({ 'msg': "Item Updated Succefully", "result": result });
     } catch (exception) {
         res.status(500);

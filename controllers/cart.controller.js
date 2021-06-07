@@ -16,11 +16,8 @@ module.exports.addProduct = async (req, res) => {
         const productId = req.params.productid;
         const product = await Product.findById(productId);
         if(product.quantity>0){
-          console.log('inside 1');
         const updateRet= await Cart.updateOne({_id:userId,"products._id":productId},{$inc:{"products.$.quantity":1}});
-        console.log('inside 2');
         if(updateRet.nModified<1){
-          console.log('inside 3');
           await Cart.findOneAndUpdate(
             {_id:userId},
             {$push:{products:{_id:product.id,quantity:1,name:product.name,price:product.price}}},
@@ -48,7 +45,6 @@ module.exports.checkout = async (req, res) => {
       $push:{history:{_id:productId,quantity:total,name:product.name,price:price}}
     }
     );
-    console.log(product,cart);
     res.redirect('/');
   }catch(err){
     res.status(500);
