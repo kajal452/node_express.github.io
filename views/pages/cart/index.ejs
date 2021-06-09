@@ -1,61 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../../partials/head'); %>
-</head>
-<body class="container">
-
-<header>
-  <%- include('../../partials/header'); %>
-</header>
-<div class="container">
-  <h2> <%= user.firstname%>  Cart</h2>
-  </div> <main>
-    <div class="row mb-3">
-
-      <% if(cart && cart.products){ %>
-    <% cart.products.forEach(function(product) { %>
-    <div class="card mb-3" style="width: 18rem">
-      <div class="card-body">
-        <h5 class="card-title">Name  <%= product.name %></h5>
-        <p class="card-text"><%= product.quantity %></p>
-        <p class="card-text">Total Price <%= product.price * product.quantity %></p>
-        <form action="cart/checkout" method="POST">
-          <input type="hidden" name="cartId" value="<%= user._id %>" />
-          <input type="hidden" name="productId" value="<%= product._id %>" />
-          <input type="hidden" name="total" value="<%= product.quantity %>" />
-          <input type="submit" value="Checkout"/>
-        </form>
-      </div>
+  <head>
+    <%- include('../../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../../partials/header'); %></header>
+    <div class="container">
+      <h2><%= user.firstname%> Cart</h2>
     </div>
-    <% }); %>
-    <% } else { %>
-  <h2>Your Cart Is Empty</h2>
-      <% } %>
-  </div>
-
-  <div class="container">
-    <h2> <%= user.firstname%>  Order</h2>
-    </div> 
-  <div class="row">
-    <% if(cart && cart.history){ %>
-      <% cart.history.forEach(function(history) { %>
-      <div class="card mb-3" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title">Name  <%= history.name %></h5>
-          <p class="card-text"><%= history.quantity %></p>
-          <p class="card-text">Total Price <%= history.price %></p>
+    <main>
+      <div class="row mb-3">
+        <% if(cart && cart.products){ %> <%
+        cart.products.forEach(function(product) { %>
+        <div class="card mb-3" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">Name <%= product.name %></h5>
+            <p class="card-text"><%= product.quantity %></p>
+            <p class="card-text">
+              Total Price <%= product.price * product.quantity %>
+            </p>
+            <form action="cart/checkout" method="POST">
+              <input type="hidden" name="cartId" value="<%= user._id %>" />
+              <input
+                type="hidden"
+                name="productId"
+                value="<%= product._id %>"
+              />
+              <input
+                type="hidden"
+                name="total"
+                value="<%= product.quantity %>"
+              />
+              <input type="submit" value="Checkout" />
+            </form>
+          </div>
         </div>
+        <% }); %> <% } else { %>
+        <h2>Your Cart Is Empty</h2>
+        <% } %>
       </div>
-      <% }); %>
-    <% } %>
-  </div>
 
-  </main>
+      <div class="container">
+        <h2><%= user.firstname%> Order</h2>
+      </div>
+      <div class="row">
+        <% if(cart && cart.history){ %> <%
+        cart.history.forEach(function(history) { %>
+        <div class="card mb-3" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">Name <%= history.name %></h5>
+            <p class="card-text"><%= history.quantity %></p>
+            <p class="card-text">Total Price <%= history.price %></p>
+          </div>
+        </div>
+        <% }); %> <% } %>
+      </div>
+    </main>
 
-<footer>
-  <%- include('../../partials/footer'); %>
-</footer>
-
-</body>
+    <footer><%- include('../../partials/footer'); %></footer>
+  </body>
 </html>

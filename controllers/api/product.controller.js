@@ -2,7 +2,7 @@ const Product = require('../../models/Product.model');
 module.exports.index = async (req, res) => {
     try {
         let result = await Product.find({ deleted_at: null });
-        res.json({ 'msg': "All Items", result : result });
+        res.json({ 'msg': "All Items", result: result });
     } catch (exception) {
         res.status(500);
     }
@@ -12,7 +12,7 @@ module.exports.index = async (req, res) => {
 module.exports.store = async (req, res) => {
     const { photo, ...product } = req.body;
     try {
-        let result = await Product.create({ ...product,image:req.file.filename});
+        let result = await Product.create({ ...product, image: req.file.filename });
         res.json({ 'msg': "Item Created Succefully", "result": result });
     } catch (exception) {
         res.status(500);

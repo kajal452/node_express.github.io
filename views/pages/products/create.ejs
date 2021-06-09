@@ -1,103 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../../partials/head'); %>
-</head>
-<body class="container">
-
-<header>
-  <%- include('../../partials/header'); %>
-</header>
-<div class="container">
-  <h2>Products</h2>
-  </div>
-<main>
-    <form method="POST" action="/admin/product" enctype="multipart/form-data">
-     
-      <div class="row">
-        <div class="col-md-3 mb-3">
-          <label for="category" class="form-label">Category</label>
-          <select class="form-control" aria-label="Default select Category" name="category" required>
-            <% subcategories.forEach(function(subcategory) { %>
-              <option value="<%= subcategory.id%>"><%= subcategory.name %></option>
-            <% }); %>
-          </select>
-  
+  <head>
+    <%- include('../../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../../partials/header'); %></header>
+    <div class="container">
+      <h2>Products</h2>
+    </div>
+    <main>
+      <form method="POST" action="/admin/product" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select
+              class="form-control"
+              aria-label="Default select Category"
+              name="category"
+              required
+            >
+              <% subcategories.forEach(function(subcategory) { %>
+              <option value="<%= subcategory.id%>">
+                <%= subcategory.name %>
+              </option>
+              <% }); %>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="name" class="form-label">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              name="name"
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="description" class="form-label">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              required
+              name="description"
+            />
+          </div>
         </div>
-        <div class="col-md-3">
-          <label for="name" class="form-label">Product Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            required
-            name="name"
-          />
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              required
+              name="price"
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input
+              type="text"
+              class="form-control"
+              id="quantity"
+              required
+              name="quantity"
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="discount" class="form-label">Discount(%)</label>
+            <input
+              type="text"
+              class="form-control"
+              id="discount"
+              required
+              name="discount"
+            />
+          </div>
+          <div class="row mt-3">
+            <div class="">
+              <input
+                type="file"
+                class="form-control"
+                id="product_image"
+                required
+                name="photo"
+                accept="image/*"
+              />
+            </div>
+          </div>
         </div>
-        <div class="col-md-3">
-          <label for="description" class="form-label">Description</label>
-          <input
-            type="text"
-            class="form-control"
-            id="description"
-            required
-            name="description"
-          />
-        </div>
-        
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-3">
-          <label for="price" class="form-label">Price</label>
-          <input
-            type="text"
-            class="form-control"
-            id="price"
-            required
-            name="price"
-          />
-        </div>
-        <div class="col-md-3">
-          <label for="quantity" class="form-label">Quantity</label>
-          <input
-            type="text"
-            class="form-control"
-            id="quantity"
-            required
-            name="quantity"
-          />
-        </div>
-        <div class="col-md-3">
-          <label for="discount" class="form-label">Discount(%)</label>
-          <input
-            type="text"
-            class="form-control"
-            id="discount"
-            required
-            name="discount"
-          />
-        </div>
-       <div class="row  mt-3">
-        <div class="">
-          <input
-        type="file"
-        class="form-control"
-        id="product_image"
-        required
-        name="photo"
-        accept="image/*"
-      />
-         </div>
-        
-       </div>
-      </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-</main>
+    </main>
 
-<footer>
-  <%- include('../../partials/footer'); %>
-</footer>
-
-</body>
+    <footer><%- include('../../partials/footer'); %></footer>
+  </body>
 </html>

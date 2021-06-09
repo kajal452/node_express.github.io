@@ -1,6 +1,6 @@
 const multer = require('multer');
 const path = require('path');
-const imageFilter = function(req, file, cb) {
+const imageFilter = function (req, file, cb) {
     // Accept images only
     if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
         req.fileValidationError = 'Only image files are allowed!';
@@ -13,9 +13,9 @@ const storage = multer.diskStorage({
         callback(null, './public/uploads/');
     },
     filename: function (request, file, callback) {
-        callback(null,Date.now()+'-'+ file.originalname)
+        callback(null, Date.now() + '-' + file.originalname)
     }
 });
 
 module.exports.imageFilter = imageFilter;
-module.exports.multer_storage= storage;
+module.exports.multer_storage = storage;

@@ -1,12 +1,12 @@
 var nodemailer = require('nodemailer');
 var transport = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
-    auth: {
-      user: "92d84b69f5e856",
-      pass: "e9786ba1427c06"
-    }
-  });
+  host: "smtp.mailtrap.io",
+  port: 2525,
+  auth: {
+    user: "92d84b69f5e856",
+    pass: "e9786ba1427c06"
+  }
+});
 
 var mailOptions = {
   from: '"Example Team" <kajal@pitangent.com>',
@@ -25,8 +25,8 @@ var mailOptions = {
 
 
 
-module.exports = function(to,options=mailOptions){
-  const opt = {...options,to:to}
+module.exports = function (to, options = mailOptions) {
+  const opt = { ...options, to: to }
   transport.sendMail(opt, (error, info) => {
     if (error) {
       return console.log(error);

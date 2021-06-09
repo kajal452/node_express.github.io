@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../../partials/head'); %>
-</head>
-<body class="container">
+  <head>
+    <%- include('../../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../../partials/header'); %></header>
+    <div class="container">
+      <h2>SubCategory</h2>
+    </div>
+    <main>
+      <a href="/admin/subcategory/create" class="btn btn-success">Add</a>
+      <ul>
+        <% subcategories.forEach(function(subcategory) { %>
+        <li>
+          <a href="/admin/subcategory/<%= subcategory._id %>">
+            <strong><%= subcategory.name %></strong></a
+          >
+          <form
+            method="POST"
+            action="/admin/subcategory/<%= subcategory.id %>?_method=DELETE"
+          >
+            <button type="submit" class="btn btn-danger">X</button>
+          </form>
+        </li>
+        <% }); %>
+      </ul>
+    </main>
 
-<header>
-  <%- include('../../partials/header'); %>
-</header>
-<div class="container">
-  <h2>SubCategory</h2>
-  </div>
-<main>
-  <a href="/admin/subcategory/create" class="btn btn-success">Add</a>
-  <ul>
-    <% subcategories.forEach(function(subcategory) { %>
-      <li>
-        <a href="/admin/subcategory/<%= subcategory._id %>"> <strong><%= subcategory.name %></strong></a>
-        <form method="POST" action="/admin/subcategory/<%= subcategory.id %>?_method=DELETE">
-          <button type="submit" class="btn btn-danger">X</button>
-        </form>
-      
-      </li>
-    <% }); %>
-  </ul>
-</main>
-
-<footer>
-  <%- include('../../partials/footer'); %>
-</footer>
-
-</body>
+    <footer><%- include('../../partials/footer'); %></footer>
+  </body>
 </html>

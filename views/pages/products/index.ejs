@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../../partials/head'); %>
-</head>
-<body class="container">
+  <head>
+    <%- include('../../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../../partials/header'); %></header>
+    <div class="container">
+      <h2>Products</h2>
+    </div>
+    <main>
+      <a href="/admin/product/create" class="btn btn-success">Add</a>
+      <ul>
+        <% products.forEach(function(product) { %>
+        <li>
+          <a href="/admin/product/<%= product.id %>">
+            <strong><%= product.name %></strong></a
+          >
+          <form
+            method="POST"
+            action="/admin/product/<%= product.id %>?_method=DELETE"
+          >
+            <button type="submit" class="btn btn-danger">X</button>
+          </form>
+        </li>
+        <% }); %>
+      </ul>
+    </main>
 
-<header>
-  <%- include('../../partials/header'); %>
-</header>
-<div class="container">
-  <h2>Products</h2>
-  </div>
-<main>
-  <a href="/admin/product/create" class="btn btn-success">Add</a>
-  <ul>
-    <% products.forEach(function(product) { %>
-      <li>
-        <a href="/admin/product/<%= product.id %>"> <strong><%= product.name %></strong></a>
-        <form method="POST" action="/admin/product/<%= product.id %>?_method=DELETE">
-          <button type="submit" class="btn btn-danger">X</button>
-        </form>
-      
-      </li>
-    <% }); %>
-  </ul>
-</main>
-
-<footer>
-  <%- include('../../partials/footer'); %>
-</footer>
-
-</body>
+    <footer><%- include('../../partials/footer'); %></footer>
+  </body>
 </html>

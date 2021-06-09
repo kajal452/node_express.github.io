@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../../partials/head'); %>
-</head>
-<body class="container">
-
-<header>
-  <%- include('../../partials/header'); %>
-</header>
-<div class="container">
-  <h2>SubCategory</h2>
-  </div>
-<main>
-    <form method="POST" action="/admin/subcategory">
-      <div class="col-md-3 mb-3">
-        <select class="form-control" aria-label="Default select Category" name="category" required>
-          <% categories.forEach(function(category) { %>
-            <option value="<%= category.id%>"><%= category.name %></option>
-          <% }); %>
-        </select>
-
-      </div>
+  <head>
+    <%- include('../../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../../partials/header'); %></header>
+    <div class="container">
+      <h2>SubCategory</h2>
+    </div>
+    <main>
+      <form method="POST" action="/admin/subcategory">
         <div class="col-md-3 mb-3">
-            <label for="name" class="form-label">SubCategory Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              required
-              name="name"
+          <select
+            class="form-control"
+            aria-label="Default select Category"
+            name="category"
+            required
+          >
+            <% categories.forEach(function(category) { %>
+            <option value="<%= category.id%>"><%= category.name %></option>
+            <% }); %>
+          </select>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="name" class="form-label">SubCategory Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            name="name"
+          />
+        </div>
 
-            />
-          </div>
-        
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-</main>
+    </main>
 
-<footer>
-  <%- include('../../partials/footer'); %>
-</footer>
-
-</body>
+    <footer><%- include('../../partials/footer'); %></footer>
+  </body>
 </html>

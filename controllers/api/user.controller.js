@@ -7,7 +7,7 @@ module.exports.postLogin = async (req, res) => {
     if (user) {
         const match = await bcrypt.compare(password, user.password);
         if (match) {
-            res.json({'token':user._id});
+            res.json({ 'token': user._id });
         } else {
             res.status(401).json(msg);
         }
@@ -17,10 +17,10 @@ module.exports.postLogin = async (req, res) => {
 }
 module.exports.postUpdateProfile = async (req, res) => {
     const id = req.token;
-    try{
-        const user = await User.findByIdAndUpdate(id,{...req.body});
-        res.json({'msg':'User Profile Update Succefully'});
-    }catch(e){
+    try {
+        const user = await User.findByIdAndUpdate(id, { ...req.body });
+        res.json({ 'msg': 'User Profile Update Succefully' });
+    } catch (e) {
         res.status(500);
     }
 
